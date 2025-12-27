@@ -1,4 +1,4 @@
-name: CI - Node + Python Tests
+name: CI - Node + Python + Docker
 
 on:
   push:
@@ -23,3 +23,10 @@ jobs:
         with:
           python-version: "3.11"
       - run: python -m unittest test_calc.py
+
+  docker-python-tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: docker build -f Dockerfile.python-tests -t cicd-flow-python-tests .
+      - run: docker run --rm cicd-flow-python-tests
