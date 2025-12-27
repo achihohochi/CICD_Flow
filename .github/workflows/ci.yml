@@ -1,11 +1,20 @@
-name: CI - First Run
+cat > .github/workflows/ci.yml <<'YAML'
+name: CI - Run Script
 
 on:
   push:
     branches: [ "main" ]
+  pull_request:
 
 jobs:
-  hello:
+  run-script:
     runs-on: ubuntu-latest
     steps:
-      - run: echo "CI is working 🎉"
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - run: node index.js
+YAML
