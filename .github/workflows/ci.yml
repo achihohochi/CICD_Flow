@@ -1,4 +1,4 @@
-name: CI - Run Script
+name: CI - Tests
 
 on:
   push:
@@ -6,7 +6,7 @@ on:
   pull_request:
 
 jobs:
-  run-script:
+  test:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -15,4 +15,4 @@ jobs:
         with:
           node-version: 20
 
-      - run: node index.js
+      - run: npm test
