@@ -1,4 +1,3 @@
-cat > .github/workflows/ci.yml <<'YAML'
 name: CI - Run Script
 
 on:
@@ -17,4 +16,3 @@ jobs:
           node-version: 20
 
       - run: node index.js
-YAML
